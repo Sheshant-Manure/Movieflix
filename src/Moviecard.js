@@ -13,11 +13,17 @@ class MovieCard extends Component {
     }
 
     addStars = () => {
-        this.setState({stars: this.state.stars + 0.5})
+        if(this.state.stars < 5) {
+            this.setState({stars: this.state.stars + 0.5})  // setState function 1st form
+        }
     }
 
     removeStars = () => {
-        this.setState({stars: this.state.stars - 0.5})
+        this.setState((prevState)=>{
+            if(this.state.stars > 0) {
+                return { stars: prevState.stars - 0.5};  // setState function 2nd form
+            }
+        })
     }
 
     render() {
