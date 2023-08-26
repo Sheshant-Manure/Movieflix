@@ -9,6 +9,7 @@ class MovieCard extends Component {
             price: 199,
             rating: 8.9,
             stars: 0.0,
+            fav: false,
         }
     }
 
@@ -24,6 +25,10 @@ class MovieCard extends Component {
                 return { stars: prevState.stars - 0.5};  // setState function 2nd form
             }
         })
+    }
+
+    toggleFav = () => {
+        this.setState({ fav: !this.state.fav} )
     }
 
     render() {
@@ -46,7 +51,8 @@ class MovieCard extends Component {
                         <img className="str-btn" onClick={this.addStars} src="https://cdn-icons-png.flaticon.com/128/748/748113.png" alt="increase" />
                         <span>{stars}</span>
                     </div>
-                    <button className="favourite-btn">Favourite</button>
+                    {/* {this.state.fav?<button onClick={this.toggleFav} className="unfavourite-btn">Un-Favourite</button>:<button onClick={this.toggleFav} className="favourite-btn">Favourite</button>}   */}
+                    {<button onClick={this.toggleFav} className={this.state.fav?"unfavourite-btn":"favourite-btn"}>{this.state.fav?"Un-favourite":"Favourite"}</button>}
                     <button className="cart-btn">Add to Cart</button>
                 </div>
               </div>
